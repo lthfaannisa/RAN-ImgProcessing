@@ -4,7 +4,7 @@ import os
 import matplotlib.pyplot as plt
 import cv2
 from histoEqual import calculate_histogram, save_histogram_image, equalize_image
-from blur import apply_blur
+from faceDetect import detect_faces  # Impor modul deteksi wajah
 
 app = Flask(__name__)
 
@@ -44,18 +44,18 @@ def upload_file():
 
             return render_template('index.html', img=img_path, img2=equalized_image_path, histogram=hist_image_path, histogram2=hist_equalized_image_path)
 
-        elif 'blur' in request.form:  # Tombol "Blur" ditekan
-            # Efek blur
-            img_blurred = apply_blur(img_path)  # Menggunakan pengaturan default
+        elif 'detect_face' in request.form:  # Tombol "Detect Face" ditekan
+            # Deteksi wajah
+            face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml') # Sesuaikan dengan lokasi file XML classifier Anda
+            img_with_faces, faces_detected = detect_faces(img_path, face_cascade)
 
-            # Menyimpan gambar hasil blur ke folder "static/uploads"
-            blurred_image_path = os.path.join('static', 'uploads', 'img-blurred.jpg')
-            cv2.imwrite(blurred_image_path, img_blurred)
+            # Menyimpan gambar hasil deteksi wajah ke folder "static/uploads"
+            face_detected_image_path = os.path.join('static', 'uploads', 'img-face-detected.jpg')
+            cv2.imwrite(face_detected_image_path, img_with_faces)
 
-            return render_template('index.html', img=img_path, img2=blurred_image_path)
-
+            return render_template('index.html', img=img_path, img2=face_detected_image_path, faces_detected=faces_detected)
+        
     return render_template('index.html')
-
 
 if __name__ == '__main__': 
     app.run(debug=True,port=8001)
