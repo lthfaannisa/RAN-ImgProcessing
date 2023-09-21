@@ -1,46 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js"></script>
-    <link href="{{url_for('static',filename='css/output.css')}}" rel="stylesheet">
-    <title>Document</title>
+    <title>PROJECT Pengolahan Citra</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
 </head>
 
-<!--Navbar-->
-<header class="bg-white">
-    <nav>
-        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <div class="relative flex h-16 items-center justify-between">
-              <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-              </div>
-              <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div class="flex flex-shrink-0 items-center">
-                  <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
-                </div>
-                <div class="hidden sm:ml-6 sm:block">
-                  <div class="flex space-x-4">
-                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                    <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</a>
-                    <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Feature</a>
-                    <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Team</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-    </nav>
-</header>
-<!--End Navbar-->
-
-<!-- Content-->
 <body>
-    <div>
-        
+    <!-- Header -->
+    <div class="header">
+        Pengolahan Citra
     </div>
 
+    <!-- Container untuk form -->
+    <div class="form-container">
+        <!-- Menggunakan div untuk mengelompokkan tombol-tombol -->
+        <!-- Container untuk form -->
+        <!-- Container untuk form -->
+        <div class="form-container">
+            <form action="{{ url_for('upload_file') }}" enctype="multipart/form-data" method="POST">
+                <input name="img" id="file-input" type="file" />
+                <!-- Pesan "Tidak ada berkas dipilih" -->
+                <p id="no-file-selected">Tidak ada berkas dipilih</p>
+                <!-- Tombol "Telusuri" -->
+                <div>
+                    <button type="submit" id="browse-button">Proses Gambar</button>
+                </div>
+            </form>
+
+        </div>
+
+        <!-- Container untuk gambar dan teks -->
+        <div class="container">
+            <div class="Inputan">
+                <!-- Foto Inputan -->
+                {% if img %}
+                <h4>SEBELUM</h4>
+                <div>
+                    <img src="{{ img }}">
+                </div>
+                {% endif %}
+                <!-- Histogram Gambar -->
+                {% if histogram %}
+                <div class="histogram1">
+                    <h4>HISTOGRAM RGB</h4>
+                    <div>
+                        <img src="{{ histogram }}">
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="Equal">
+                <!-- Foto Equal -->
+                {% if img2 %}
+                <h4>SESUDAH</h4>
+                <div>
+                    <img src="{{ img2 }}">
+                </div>
+                {% endif %}
+
+                <!-- Histogram Equalize -->
+                {% if histogram2 %}
+                <div class="histogram2">
+                    <h4>HISTOGRAM EQUALIZE</h4>
+                    <div>
+                        <img src="{{ histogram2 }}">
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+
+
 </body>
-<!--End Content-->
 
 </html>
