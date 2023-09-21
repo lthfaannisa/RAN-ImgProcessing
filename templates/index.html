@@ -16,20 +16,22 @@
     <!-- Container untuk form -->
     <div class="form-container">
         <!-- Menggunakan div untuk mengelompokkan tombol-tombol -->
-        <!-- Container untuk form -->
-        <!-- Container untuk form -->
         <div class="form-container">
             <form action="{{ url_for('upload_file') }}" enctype="multipart/form-data" method="POST">
                 <input name="img" id="file-input" type="file" />
                 <!-- Pesan "Tidak ada berkas dipilih" -->
                 <p id="no-file-selected">Tidak ada berkas dipilih</p>
-                <!-- Tombol "Telusuri" -->
+                <!-- Tombol "Histogram Equalization" -->
                 <div>
-                    <button type="submit" id="browse-button">Proses Gambar</button>
+                    <button type="submit" name="equalize" value="1" id="equalize-button">Histogram Equalization</button>
+                </div>
+                <!-- Tombol "Blur" -->
+                <div>
+                    <button type="submit" name="blur" value="1" id="blur-button">Blur</button>
                 </div>
             </form>
-
         </div>
+
 
         <!-- Container untuk gambar dan teks -->
         <div class="container">
@@ -72,8 +74,6 @@
                 {% endif %}
             </div>
         </div>
-
-
 
 </body>
 
