@@ -1,0 +1,90 @@
+/* Header */
+
+.header {
+  background-color: #7EAA92;
+  color: #fff; /* Warna teks putih */
+  text-align: center;
+  padding: 50px;
+  font-size: 36px;
+  font-family: 'Merriweather Sans', sans-serif;
+}
+
+/* Style untuk container form */
+.form-container {
+  text-align: center; /* Untuk mengatur form ke tengah */
+  margin-top: 30px;
+  font-family: 'Merriweather Sans', sans-serif;
+}
+
+/* Style untuk container tombol-tombol */
+.button-container {
+  margin-top: 10px; /* Jarak antara tombol-tombol dan input file */
+  font-family: 'Merriweather Sans', sans-serif;
+}
+
+/* Style untuk pesan "Tidak ada berkas dipilih" */
+#no-file-selected {
+  text-align: center;
+  margin-top: 10px;
+  display: none; /* Sembunyikan pesan awalnya */
+  font-family: 'Merriweather Sans', sans-serif;
+}
+
+/* Style untuk tombol-tombol */
+button[type="submit"] {
+  background-color: #AEC3AE;
+  color: #fff; /* Warna teks putih */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px; /* Jarak antara tombol-tombol */
+  margin-top: 10px;
+  font-family: 'Merriweather Sans', sans-serif;
+}
+
+.container {
+  margin: 30px;
+  display: flex;
+  flex-direction: row; /* Mengatur konten dalam baris */
+  align-items: flex-start; /* Memulai konten di bagian atas vertikal */
+  text-align: center;
+  color: #7EAA92;
+}
+
+/* Style untuk teks dan gambar */
+.container h4 {
+  margin-top: 20px;
+  margin-right: 50px; /* Jarak kanan untuk teks */
+  margin-left: 50px;
+  font-family: 'Merriweather Sans', sans-serif;
+  text-align: center;
+}
+
+.container img {
+  width: 400px;
+  margin-left: 125px;
+  font-family: 'Merriweather Sans', sans-serif;
+  text-align: center;
+}
+
+/* Mengatur tata letak elemen-elemen histogram */
+.histogram1 {
+  margin-top: 0px; /* Jarak antara foto equal dan histogram equalize */
+  font-family: 'Merriweather Sans', sans-serif;
+  text-align: center;
+}
+
+.Equal {
+  margin-left: 100px;
+  width: 400px;
+  font-family: 'Merriweather Sans', sans-serif;
+  text-align: center;
+
+}
+
+.histogram2 {
+  margin-top: 30px; /* Jarak antara histogram equalize dan foto equalize */
+  font-family: 'Merriweather Sans', sans-serif;
+  text-align: center;
+}
