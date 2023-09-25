@@ -34,6 +34,7 @@
 button[type="submit"] {
   background-color: #AEC3AE;
   color: #fff; /* Warna teks putih */
+  width: 200px;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
