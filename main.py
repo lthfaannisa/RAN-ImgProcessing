@@ -4,8 +4,8 @@ import os
 import matplotlib.pyplot as plt
 import cv2
 from histoEqual import calculate_histogram, save_histogram_image, equalize_image
-from faceDetect import detect_faces
 from blurFace import apply_face_blur
+from edgeDetect import detect_edges
 
 app = Flask(__name__)
 
@@ -20,7 +20,6 @@ def upload_file():
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD'], filename))
         img_path = os.path.join(app.config['UPLOAD'], filename)
-        face_cascade = cv2.CascadeClassifier('static\haarcascade_frontalface_default.xml')
 
         if 'equalize' in request.form:  # Tombol "Histogram Equalization" ditekan
             # Menghitung histogram
@@ -46,17 +45,9 @@ def upload_file():
 
             return render_template('index.html', img=img_path, img2=equalized_image_path, histogram=hist_image_path, histogram2=hist_equalized_image_path)
 
-        elif 'detect_face' in request.form:  # Tombol "Detect Face" ditekan
-            # Deteksi wajah
-            img_with_faces, faces_detected = detect_faces(img_path, face_cascade)
-
-            # Menyimpan gambar hasil deteksi wajah ke folder "static/uploads"
-            face_detected_image_path = os.path.join('static', 'uploads', 'img-face-detected.jpg')
-            cv2.imwrite(face_detected_image_path, img_with_faces)
-
-            return render_template('index.html', img=img_path, img2=face_detected_image_path, faces_detected=faces_detected)
-        
         elif 'blur_face' in request.form:  # Tombol "Blur Face" ditekan
+            face_cascade = cv2.CascadeClassifier('static\haarcascade_frontalface_default.xml')
+            
             # Efek blur wajah
             img_blurred = apply_face_blur(img_path, face_cascade)  # Menggunakan cascade classifier yang telah diinisialisasi
 
@@ -65,6 +56,15 @@ def upload_file():
             cv2.imwrite(blurred_image_path, img_blurred)
 
             return render_template('index.html', img=img_path, img2=blurred_image_path)
+        
+        elif 'detect_edges' in request.form:  # Tombol "Edge Detection" ditekan
+            edges = detect_edges(img_path)
+
+            # Menyimpan gambar hasil deteksi tepi ke folder "static/uploads"
+            edges_image_path = os.path.join('static', 'uploads', 'img-edges.jpg')
+            cv2.imwrite(edges_image_path, edges)
+
+            return render_template('index.html', img=img_path, img2=edges_image_path)
         
     return render_template('index.html')
 
