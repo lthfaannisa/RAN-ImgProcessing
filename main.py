@@ -6,6 +6,7 @@ import cv2
 from histoEqual import calculate_histogram, save_histogram_image, equalize_image
 from blurFace import apply_face_blur
 from edgeDetect import detect_edges
+from segmentImg import cluster_segmentation
 
 app = Flask(__name__)
 
@@ -65,6 +66,16 @@ def upload_file():
             cv2.imwrite(edges_image_path, edges)
 
             return render_template('index.html', img=img_path, img2=edges_image_path)
+        
+        elif 'segment_image' in request.form:  # Tombol "Segmentasi Citra" ditekan
+            num_clusters = 3  # Ganti jumlah klaster sesuai kebutuhan
+            segmented_image = cluster_segmentation(img_path, num_clusters)
+
+            # Menyimpan gambar hasil segmentasi ke folder "static/uploads"
+            segmented_image_path = os.path.join('static', 'uploads', 'img-segmented.jpg')
+            cv2.imwrite(segmented_image_path, cv2.cvtColor(segmented_image, cv2.COLOR_RGB2BGR))
+
+            return render_template('index.html', img=img_path, img2=segmented_image_path)
         
     return render_template('index.html')
 
