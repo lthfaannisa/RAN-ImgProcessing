@@ -1,12 +1,17 @@
-/* Header */
+body {
+  background-color: #1A120B;
+  color: #D5CEA3;
+}
 
+/* Header */
 .header {
-  background-color: #7EAA92;
-  color: #fff; /* Warna teks putih */
+  background-image: url('../static/background_img.jpg');
+  background-size: cover;
+  color: #628E90;
   text-align: center;
-  padding: 50px;
-  font-size: 36px;
-  font-family: 'Merriweather Sans', sans-serif;
+  padding: 35px;
+  font-size: 40px;
+  font-family: Copperplate, Papyrus, fantasy;
 }
 
 /* Style untuk container form */
@@ -18,7 +23,7 @@
 
 /* Style untuk container tombol-tombol */
 .button-container {
-  margin-top: 10px; /* Jarak antara tombol-tombol dan input file */
+  margin-top: 20px; /* Jarak antara tombol-tombol dan input file */
   font-family: 'Merriweather Sans', sans-serif;
 }
 
@@ -26,46 +31,60 @@
 #no-file-selected {
   text-align: center;
   margin-top: 10px;
+  color: #f00;
+  font-style: italic;
   display: none; /* Sembunyikan pesan awalnya */
   font-family: 'Merriweather Sans', sans-serif;
 }
 
 /* Style untuk tombol-tombol */
 button[type="submit"] {
-  background-color: #AEC3AE;
-  color: #fff; /* Warna teks putih */
+  background-color: #628E90;
+  color: #1A120B;
   width: 200px;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-right: 10px; /* Jarak antara tombol-tombol */
+  margin-right: 10px;
   margin-top: 10px;
   font-family: 'Merriweather Sans', sans-serif;
+  transition: background-color 0.3s ease; /* Efek hover */
 }
 
+button[type="submit"]:hover {
+  background-color: #94A684;
+}
+
+/* Gaya untuk container grid */
 .container {
-  margin: 30px;
-  display: flex;
-  flex-direction: row; /* Mengatur konten dalam baris */
-  align-items: flex-start; /* Memulai konten di bagian atas vertikal */
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dua kolom dengan lebar yang sama */
+  gap: 20px;
+  align-items: center; /* Tengahkan vertikal */
   text-align: center;
-  color: #7EAA92;
+  bottom: 15px;
+  margin: 10px;
 }
 
-/* Style untuk teks dan gambar */
-.container h4 {
-  margin-top: 20px;
-  margin-right: 50px; /* Jarak kanan untuk teks */
-  margin-left: 50px;
-  font-family: 'Merriweather Sans', sans-serif;
-  text-align: center;
-}
-
+/* Gaya untuk gambar dalam grid */
 .container img {
   width: 400px;
-  margin-left: 125px;
+  height: auto;
+  margin: auto;
+  padding-bottom: 10px;
+  display: block;
+}
+
+/* Gaya untuk teks "SEBELUM" dan "SESUDAH" */
+.container h4 {
+  margin-bottom: 15px;
   font-family: 'Merriweather Sans', sans-serif;
+  text-align: center;
+}
+
+/* Gaya untuk teks dan gambar di dalam container "Inputan" dan "Equal" */
+.Inputan, .Output {
   text-align: center;
 }
 
@@ -76,16 +95,26 @@ button[type="submit"] {
   text-align: center;
 }
 
-.Equal {
-  margin-left: 100px;
-  width: 400px;
-  font-family: 'Merriweather Sans', sans-serif;
-  text-align: center;
-
-}
-
 .histogram2 {
   margin-top: 30px; /* Jarak antara histogram equalize dan foto equalize */
   font-family: 'Merriweather Sans', sans-serif;
   text-align: center;
+}
+
+/* Gaya untuk footer */
+footer {
+  background-color: #3C2A21;
+  color: #D5CEA3;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  padding: 10px;
+  font-family: 'Merriweather Sans', sans-serif;
+}
+
+/* Gaya untuk teks dalam footer */
+.footer p {
+  font-size: 10px;
+  margin: 0;
 }
