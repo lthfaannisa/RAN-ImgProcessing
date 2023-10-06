@@ -10,7 +10,7 @@ def apply_face_blur(img_path, face_cascade):
     # Terapkan efek blur pada wajah yang terdeteksi
     for (x, y, w, h) in faces:
         face = img[y:y+h, x:x+w]
-        face = cv2.GaussianBlur(face, (99, 99), 30)  # Sesuaikan ukuran kernel dan kekuatan blur
+        face = cv2.GaussianBlur(face, (99, 99), 5)  # Sesuaikan ukuran kernel dan kekuatan blur
         img[y:y+h, x:x+w] = face
 
     return img

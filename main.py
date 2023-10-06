@@ -6,7 +6,9 @@ import cv2
 from histoEqual import calculate_histogram, save_histogram_image, equalize_image
 from blurFace import apply_face_blur
 from edgeDetect import detect_edges
-from segmentImg import cluster_segmentation
+from imgSegment import cluster_segmentation
+from faceMoustache import add_moustache_to_face
+from reduceNoise import reduce_noise
 
 app = Flask(__name__)
 
@@ -68,7 +70,7 @@ def upload_file():
             return render_template('index.html', img=img_path, img2=edges_image_path)
         
         elif 'segment_image' in request.form:  # Tombol "Segmentasi Citra" ditekan
-            num_clusters = 3  # Ganti jumlah klaster sesuai kebutuhan
+            num_clusters = 5  # Ganti jumlah klaster sesuai kebutuhan
             segmented_image = cluster_segmentation(img_path, num_clusters)
 
             # Menyimpan gambar hasil segmentasi ke folder "static/uploads"
@@ -76,6 +78,25 @@ def upload_file():
             cv2.imwrite(segmented_image_path, cv2.cvtColor(segmented_image, cv2.COLOR_RGB2BGR))
 
             return render_template('index.html', img=img_path, img2=segmented_image_path)
+        
+        elif 'add_moustache' in request.form:  # Tombol "Tambah Kumis" ditekan
+            img_with_moustache = add_moustache_to_face(img_path)  # Menambahkan kumis
+
+            # Menyimpan gambar hasil tambah kumis ke folder "static/uploads"
+            img_with_moustache_path = os.path.join('static', 'uploads', 'img-with-moustache.jpg')
+            cv2.imwrite(img_with_moustache_path, img_with_moustache)
+
+            return render_template('index.html', img=img_path, img2=img_with_moustache_path)
+        
+        elif 'reduce_noise' in request.form:  # Tombol "Reduce Noise" ditekan
+            # Mengurangi noise pada gambar
+            img_smoothed = reduce_noise(img_path)
+
+            # Menyimpan gambar hasil pengurangan noise ke folder "static/uploads"
+            smoothed_image_path = os.path.join('static', 'uploads', 'img-smoothed.jpg')
+            cv2.imwrite(smoothed_image_path, img_smoothed)
+
+            return render_template('index.html', img=img_path, img2=smoothed_image_path)
         
     return render_template('index.html')
 

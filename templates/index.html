@@ -9,9 +9,9 @@
 
 <body>
     <!-- Header -->
-    <div class="header">
-        Pengolahan Citra
-    </div>
+    <header class="header">
+        <strong>Image Processing</strong>
+    </header>
 
     <!-- Container untuk form -->
     <div class="form-container">
@@ -23,7 +23,7 @@
                 <p id="no-file-selected">Tidak ada berkas dipilih</p>
                 <!-- Tombol "Histogram Equalization" -->
                 <div>
-                    <button type="submit" name="equalize" value="1" id="equalize-button">Histogram Equalization</button>
+                    <button type="submit" name="equalize" value="1" id="equalize-button">Equalization</button>
                 </div>    
                 <!-- Tombol "Face Blur" -->
                 <div>
@@ -31,11 +31,19 @@
                 </div>   
                 <!-- Tombol "Edge Detection" -->
                 <div>
-                    <button type="submit" name="detect_edges" value="1" id="detect-edges-button">Edge Detection</button>
+                    <button type="submit" name="detect_edges" value="1" id="detect-edges-button">Detect Edge</button>
                 </div>
                 <!-- Tombol "Segmentasi Citra" -->
                 <div>
                     <button type="submit" name="segment_image" value="1" id="segment-image-button">Image Segmentation</button>
+                </div>
+                <!-- Tombol "Tambah Kumis" -->
+                <div>
+                    <button type="submit" name="add_moustache" value="1" id="add-moustache-button">Add Moustache</button>
+                </div>
+                <!-- Tombol "Reduce Noise" -->
+                <div>
+                    <button type="submit" name="reduce_noise" value="1" id="reduce-noise-button">Reduce Noise</button>
                 </div>
             </form>
         </div>
@@ -46,7 +54,7 @@
             <div class="Inputan">
                 <!-- Foto Inputan -->
                 {% if img %}
-                <h4>SEBELUM</h4>
+                <h4>Before</h4>
                 <div>
                     <img src="{{ img }}">
                 </div>
@@ -54,7 +62,7 @@
                 <!-- Histogram Gambar -->
                 {% if histogram %}
                 <div class="histogram1">
-                    <h4>HISTOGRAM RGB</h4>
+                    <h4>RGB Histogram</h4>
                     <div>
                         <img src="{{ histogram }}">
                     </div>
@@ -62,10 +70,10 @@
                 {% endif %}
             </div>
 
-            <div class="Equal">
+            <div class="Output">
                 <!-- Foto Equal -->
                 {% if img2 %}
-                <h4>SESUDAH</h4>
+                <h4>After</h4>
                 <div>
                     <img src="{{ img2 }}">
                 </div>
@@ -74,7 +82,7 @@
                 <!-- Histogram Equalize -->
                 {% if histogram2 %}
                 <div class="histogram2">
-                    <h4>HISTOGRAM EQUALIZE</h4>
+                    <h4>Equalize Histogram</h4>
                     <div>
                         <img src="{{ histogram2 }}">
                     </div>
@@ -83,6 +91,12 @@
             </div>
         </div>
 
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; RAN. Pengolahan Citra</p>
+            </div>
+        </footer>
 </body>
 
 </html>
