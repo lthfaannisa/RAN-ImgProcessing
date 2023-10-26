@@ -70,7 +70,7 @@ def upload_file():
             return render_template('index.html', img=img_path, img2=edges_image_path)
         
         elif 'segment_image' in request.form:  # Tombol "Segmentasi Citra" ditekan
-            num_clusters = 5  # Ganti jumlah klaster sesuai kebutuhan
+            num_clusters = 3  # Ganti jumlah klaster sesuai kebutuhan
             segmented_image = cluster_segmentation(img_path, num_clusters)
 
             # Menyimpan gambar hasil segmentasi ke folder "static/uploads"
