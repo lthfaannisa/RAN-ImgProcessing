@@ -11,6 +11,7 @@ from faceMoustache import add_moustache_to_face
 from reduceNoise import reduce_noise
 from openingMorphology import apply_opening
 from closingMorphology import apply_closing
+from dilationMorphology import apply_dilation
 
 app = Flask(__name__)
 
@@ -115,6 +116,15 @@ def upload_file():
             # Menyimpan gambar hasil operasi closing ke folder "static/uploads"
             closed_image_path = os.path.join('static', 'uploads', 'img-closed.jpg')
             cv2.imwrite(closed_image_path, img_closed)
+
+            return render_template('index.html', img=img_path, img2=closed_image_path)
+        
+        elif 'apply_dilation' in request.form:  # Tombol "Closing" ditekan
+            img_dilation = apply_dilation(img_path)
+
+            # Menyimpan gambar hasil operasi closing ke folder "static/uploads"
+            dilation_image_path = os.path.join('static', 'uploads', 'img-closed.jpg')
+            cv2.imwrite(dilation_image_path, img_dilation)
 
             return render_template('index.html', img=img_path, img2=closed_image_path)
         

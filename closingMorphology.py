@@ -8,7 +8,10 @@ def apply_closing(image_path):
     # Buat kernel untuk operasi closing
     kernel = np.ones((5, 5), np.uint8)
 
-    # Lakukan operasi closing
-    closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)
+    # Dilasi
+    dilasi = cv2.dilate(img, kernel, iterations=1)
 
+    # Erosi
+    closing = cv2.erode(dilasi, kernel, iterations=1)
+    
     return closing
