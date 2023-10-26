@@ -1,9 +1,10 @@
 body {
   background-color: #fff;
+  color: #628E90;
 }
 
 /* Header */
-.header {
+header {
   background-color: #628E90;
   background-size: cover;
   color: #fff;
@@ -73,7 +74,7 @@ button[type="submit"]:hover {
   width: 400px;
   height: auto;
   margin: auto;
-  padding-bottom: 50px;
+  padding-bottom: 25px;
   display: block;
 }
 
@@ -107,10 +108,9 @@ footer {
   background-color: #9BABB8;
   color: #fff;
   text-align: center;
-  position: fixed;
   width: 100%;
   bottom: 0px;
   font-family: 'Merriweather Sans', sans-serif;
   font-size: 10px;
-  margin: 0;
+  padding: 3px;
 }
