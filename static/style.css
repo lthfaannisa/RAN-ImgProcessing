@@ -1,17 +1,16 @@
 body {
-  background-color: #1A120B;
-  color: #D5CEA3;
+  background-color: #fff;
 }
 
 /* Header */
 .header {
-  background-image: url('../static/background_img.jpg');
+  background-color: #628E90;
   background-size: cover;
-  color: #628E90;
+  color: #fff;
   text-align: center;
   padding: 35px;
   font-size: 40px;
-  font-family: Copperplate, Papyrus, fantasy;
+  font-family: 'Merriweather Sans', sans-serif;
 }
 
 /* Style untuk container form */
@@ -34,7 +33,6 @@ body {
 #no-file-selected {
   text-align: center;
   margin-top: 10px;
-  color: #f00;
   font-style: italic;
   display: none; /* Sembunyikan pesan awalnya */
   font-family: 'Merriweather Sans', sans-serif;
@@ -43,7 +41,7 @@ body {
 /* Style untuk tombol-tombol */
 button[type="submit"] {
   background-color: #628E90;
-  color: #1A120B;
+  color: #fff;
   width: 200px;
   padding: 10px 20px;
   border: none;
@@ -52,19 +50,19 @@ button[type="submit"] {
   margin-right: 10px;
   margin-top: 10px;
   font-family: 'Merriweather Sans', sans-serif;
-  transition: background-color 0.3s ease; /* Efek hover */
+  transition: background-color 0.3s ease;
 }
 
 button[type="submit"]:hover {
-  background-color: #BACDDB;
+  background-color: #9BABB8;
 }
 
 /* Gaya untuk container grid */
 .container {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Dua kolom dengan lebar yang sama */
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
-  align-items: center; /* Tengahkan vertikal */
+  align-items: center;
   text-align: center;
   bottom: 15px;
   margin: 10px;
@@ -75,7 +73,7 @@ button[type="submit"]:hover {
   width: 400px;
   height: auto;
   margin: auto;
-  padding-bottom: 10px;
+  padding-bottom: 50px;
   display: block;
 }
 
@@ -93,31 +91,26 @@ button[type="submit"]:hover {
 
 /* Mengatur tata letak elemen-elemen histogram */
 .histogram1 {
-  margin-top: 0px; /* Jarak antara foto equal dan histogram equalize */
+  margin-top: 0px;
   font-family: 'Merriweather Sans', sans-serif;
   text-align: center;
 }
 
 .histogram2 {
-  margin-top: 30px; /* Jarak antara histogram equalize dan foto equalize */
+  margin-top: 30px;
   font-family: 'Merriweather Sans', sans-serif;
   text-align: center;
 }
 
 /* Gaya untuk footer */
 footer {
-  background-color: #3C2A21;
-  color: #D5CEA3;
+  background-color: #9BABB8;
+  color: #fff;
   text-align: center;
   position: fixed;
   width: 100%;
   bottom: 0px;
-  padding: 10px;
   font-family: 'Merriweather Sans', sans-serif;
-}
-
-/* Gaya untuk teks dalam footer */
-.footer p {
   font-size: 10px;
   margin: 0;
 }
