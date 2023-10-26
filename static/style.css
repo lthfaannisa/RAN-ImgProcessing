@@ -23,7 +23,10 @@ body {
 
 /* Style untuk container tombol-tombol */
 .button-container {
-  margin-top: 20px; /* Jarak antara tombol-tombol dan input file */
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
   font-family: 'Merriweather Sans', sans-serif;
 }
 
