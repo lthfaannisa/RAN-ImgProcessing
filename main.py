@@ -1,14 +1,16 @@
+import os
+import cv2
+import matplotlib.pyplot as plt
 from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
-import os
-import matplotlib.pyplot as plt
-import cv2
 from histoEqual import calculate_histogram, save_histogram_image, equalize_image
 from blurFace import apply_face_blur
 from edgeDetect import detect_edges
 from imgSegment import cluster_segmentation
 from faceMoustache import add_moustache_to_face
 from reduceNoise import reduce_noise
+from openingMorphology import apply_opening
+from closingMorphology import apply_closing
 
 app = Flask(__name__)
 
@@ -97,6 +99,24 @@ def upload_file():
             cv2.imwrite(smoothed_image_path, img_smoothed)
 
             return render_template('index.html', img=img_path, img2=smoothed_image_path)
+        
+        elif 'apply_opening' in request.form:  # Tombol "Opening Morphology" ditekan
+            # Menjalankan operasi Opening Morphology
+            opened_image = apply_opening(img_path)
+
+            # Menyimpan gambar hasil Opening Morphology ke folder "static/uploads"
+            opened_image_path = os.path.join('static', 'uploads', 'img-opened.jpg')
+            cv2.imwrite(opened_image_path, opened_image)
+
+            return render_template('index.html', img=img_path, img2=opened_image_path)
+        elif 'apply_closing' in request.form:  # Tombol "Closing" ditekan
+            img_closed = apply_closing(img_path)
+
+            # Menyimpan gambar hasil operasi closing ke folder "static/uploads"
+            closed_image_path = os.path.join('static', 'uploads', 'img-closed.jpg')
+            cv2.imwrite(closed_image_path, img_closed)
+
+            return render_template('index.html', img=img_path, img2=closed_image_path)
         
     return render_template('index.html')
 
