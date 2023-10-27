@@ -21,11 +21,30 @@ header {
   font-family: 'Merriweather Sans', sans-serif;
 }
 
-/* Style untuk container tombol-tombol */
+/* Gaya untuk container tombol */
 .button-container {
   display: grid;
-  justify-content: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
   align-items: center;
+  text-align: center;
+  bottom: 15px;
+  margin: 10px;
+}
+
+/* Style untuk container tombol-tombol */
+.button-position1 {
+  display: grid;
+  justify-content: right;
+  align-items: top;
+  margin-top: 20px;
+  font-family: 'Merriweather Sans', sans-serif;
+}
+
+.button-position2 {
+  display: grid;
+  justify-content: left;
+  align-items: top;
   margin-top: 20px;
   font-family: 'Merriweather Sans', sans-serif;
 }
@@ -105,7 +124,7 @@ button[type="submit"]:hover {
 
 /* Gaya untuk footer */
 footer {
-  background-color: #9BABB8;
+  background-color: #628E90;
   color: #fff;
   text-align: center;
   width: 100%;
