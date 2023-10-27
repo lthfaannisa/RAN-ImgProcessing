@@ -12,6 +12,7 @@ from reduceNoise import reduce_noise
 from openingMorphology import apply_opening
 from closingMorphology import apply_closing
 from dilationMorphology import apply_dilation
+from erosionMorphology import apply_erosion
 
 app = Flask(__name__)
 upload_folder = os.path.join('static', 'uploads')
@@ -96,6 +97,14 @@ def upload_file():
             cv2.imwrite(dilation_image_path, img_dilation)
 
             return render_template('index.html', img=img_path, img2=dilation_image_path)
+        
+        elif 'apply_erosion' in request.form:
+            # Menjalankan operasi Erosi
+            img_erosion = apply_erosion(img_path)
+            erosion_image_path = os.path.join('static', 'uploads', 'img-closed.jpg')
+            cv2.imwrite(erosion_image_path, img_erosion)
+
+            return render_template('index.html', img=img_path, img2=erosion_image_path)
         
         elif 'apply_opening' in request.form:
             # Menjalankan operasi Opening
