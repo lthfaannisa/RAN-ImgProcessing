@@ -13,6 +13,7 @@ from openingMorphology import apply_opening
 from closingMorphology import apply_closing
 from dilationMorphology import apply_dilation
 from erosionMorphology import apply_erosion
+from cubicInterpolation import apply_cubic
 
 app = Flask(__name__)
 upload_folder = os.path.join('static', 'uploads')
@@ -93,7 +94,7 @@ def upload_file():
         elif 'apply_dilation' in request.form:
             # Menjalankan operasi Dilasi
             img_dilation = apply_dilation(img_path)
-            dilation_image_path = os.path.join('static', 'uploads', 'img-closed.jpg')
+            dilation_image_path = os.path.join('static', 'uploads', 'img-dilation.jpg')
             cv2.imwrite(dilation_image_path, img_dilation)
 
             return render_template('index.html', img=img_path, img2=dilation_image_path)
@@ -101,7 +102,7 @@ def upload_file():
         elif 'apply_erosion' in request.form:
             # Menjalankan operasi Erosi
             img_erosion = apply_erosion(img_path)
-            erosion_image_path = os.path.join('static', 'uploads', 'img-closed.jpg')
+            erosion_image_path = os.path.join('static', 'uploads', 'img-erotion.jpg')
             cv2.imwrite(erosion_image_path, img_erosion)
 
             return render_template('index.html', img=img_path, img2=erosion_image_path)
@@ -121,6 +122,14 @@ def upload_file():
             cv2.imwrite(closed_image_path, img_closed)
 
             return render_template('index.html', img=img_path, img2=closed_image_path)
+        
+        elif 'apply_cubic' in request.form:
+            # Menjalankan operasi Cubic
+            img_cubic = apply_cubic(img_path)
+            cubic_image_path = os.path.join('static', 'uploads', 'img-cubic.jpg')
+            cv2.imwrite(cubic_image_path, img_cubic)
+
+            return render_template('index.html', img=img_path, img2=cubic_image_path)
         
     return render_template('index.html')
 
