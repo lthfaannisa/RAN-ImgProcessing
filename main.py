@@ -14,6 +14,7 @@ from closingMorphology import apply_closing
 from dilationMorphology import apply_dilation
 from erosionMorphology import apply_erosion
 from cubicInterpolation import apply_cubic
+from linearInterpolation import apply_linear
 
 app = Flask(__name__)
 upload_folder = os.path.join('static', 'uploads')
@@ -122,6 +123,14 @@ def upload_file():
             cv2.imwrite(closed_image_path, img_closed)
 
             return render_template('index.html', img=img_path, img2=closed_image_path)
+        
+        elif 'apply_linear' in request.form:
+            # Menjalankan operasi interpolasi Linear
+            img_linear = apply_linear(img_path)
+            linear_image_path = os.path.join('static', 'uploads', 'img-linear.jpg')
+            cv2.imwrite(linear_image_path, img_linear)
+
+            return render_template('index.html', img=img_path, img2=linear_image_path)
         
         elif 'apply_cubic' in request.form:
             # Menjalankan operasi Cubic
