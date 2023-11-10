@@ -90,7 +90,8 @@ button[type="submit"]:hover {
 
 /* Gaya untuk gambar dalam grid */
 .container img {
-  width: 400px;
+  width: auto;
+  /* width: 400px; */
   height: auto;
   margin: auto;
   padding-bottom: 50px;
