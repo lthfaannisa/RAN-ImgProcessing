@@ -15,6 +15,7 @@ from dilationMorphology import apply_dilation
 from erosionMorphology import apply_erosion
 from cubicInterpolation import apply_cubic
 from linearInterpolation import apply_linear
+from saltPepperNoise import apply_salt_and_pepper_noise
 
 app = Flask(__name__)
 upload_folder = os.path.join('static', 'uploads')
@@ -139,6 +140,17 @@ def upload_file():
             cv2.imwrite(cubic_image_path, img_cubic)
 
             return render_template('index.html', img=img_path, img2=cubic_image_path)
+        
+        elif 'salt_pepper_noise' in request.form:
+            # Menambahkan salt and pepper noise
+            salt_prob = 0.01
+            pepper_prob = 0.01  
+            img_with_noise = apply_salt_and_pepper_noise(img_path, salt_prob, pepper_prob)
+            img_with_noise_path = os.path.join('static', 'uploads', 'img-with-noise.jpg')
+            cv2.imwrite(img_with_noise_path, img_with_noise)
+
+            return render_template('index.html', img=img_path, img2=img_with_noise_path)
+
         
     return render_template('index.html')
 
