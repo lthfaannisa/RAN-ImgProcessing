@@ -16,6 +16,7 @@ from erosionMorphology import apply_erosion
 from cubicInterpolation import apply_cubic
 from linearInterpolation import apply_linear
 from saltPepperNoise import apply_salt_and_pepper_noise
+from rankOrderFilter import remove_salt_and_pepper_noise_rank_order
 
 app = Flask(__name__)
 upload_folder = os.path.join('static', 'uploads')
@@ -150,6 +151,18 @@ def upload_file():
             cv2.imwrite(img_with_noise_path, img_with_noise)
 
             return render_template('index.html', img=img_path, img2=img_with_noise_path)
+        
+        elif 'remove_salt_pepper_noise' in request.form:
+            # Applying Rank-Order Filtering to remove salt and pepper noise with default parameters
+            window_size = 3  # You can adjust this value if needed
+            rank = window_size * window_size // 2  # Median rank for a square window
+            img_filtered = remove_salt_and_pepper_noise_rank_order(img_path, window_size, rank)
+            img_filtered_path = os.path.join('static', 'uploads', 'img-filtered.jpg')
+            cv2.imwrite(img_filtered_path, img_filtered)
+
+            return render_template('index.html', img=img_path, img2=img_filtered_path)
+
+
 
         
     return render_template('index.html')
