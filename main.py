@@ -17,6 +17,7 @@ from cubicInterpolation import apply_cubic
 from linearInterpolation import apply_linear
 from saltPepperNoise import apply_salt_and_pepper_noise
 from rankOrderFilter import remove_salt_and_pepper_noise_rank_order
+from chainCode import get_chain_code
 
 app = Flask(__name__)
 upload_folder = os.path.join('static', 'uploads')
@@ -161,9 +162,13 @@ def upload_file():
             cv2.imwrite(img_filtered_path, img_filtered)
 
             return render_template('index.html', img=img_path, img2=img_filtered_path)
-
-
-
+        
+        elif 'calculate_chain_code' in request.form:
+            # Calculate chain code
+            chain_code = get_chain_code(img_path)
+            
+            # Pass chain code to the HTML template
+            return render_template('index.html', img=img_path, chain_code=chain_code)
         
     return render_template('index.html')
 
