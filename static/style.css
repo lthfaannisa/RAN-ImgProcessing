@@ -82,7 +82,7 @@ button[type="submit"]:hover {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-  align-items: center;
+  align-items: start;
   text-align: center;
   bottom: 15px;
   margin: 10px;
@@ -107,7 +107,7 @@ button[type="submit"]:hover {
 
 /* Gaya untuk teks dan gambar di dalam container "Inputan" dan "Equal" */
 .Inputan, .Output {
-  text-align: center;
+  text-align: justify;
 }
 
 /* Mengatur tata letak elemen-elemen histogram */
@@ -121,17 +121,4 @@ button[type="submit"]:hover {
   margin-top: 30px;
   font-family: 'Merriweather Sans', sans-serif;
   text-align: center;
-}
-
-/* Gaya untuk footer */
-footer {
-  background-color: #628E90;
-  color: #fff;
-  text-align: center;
-  width: 100%;
-  position: fixed;
-  bottom: 0px;
-  font-family: 'Merriweather Sans', sans-serif;
-  font-size: 10px;
-  padding: 3px;
 }
