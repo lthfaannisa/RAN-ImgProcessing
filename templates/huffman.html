@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PROJECT Pengolahan Citra</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <strong>Image Processing</strong>
+    </header>
+
+    <!-- Container untuk form -->
+    <div class="form-container">
+        <!-- Menggunakan div untuk mengelompokkan tombol-tombol -->
+        <div class="form-container">
+            <form action="{{ url_for('upload_text') }}" method="POST">
+                <textarea name="text_input" id="text-input" rows="1" cols="30"></textarea>
+                <button name="process_text" value="1">submit</button>
+                <div class="button-container">
+                    <div class="button-position1">
+                        <!-- Tambahkan tombol-tombol jika diperlukan -->
+                    </div>
+                    <div class="button-position2">
+                        <button type="submit" name="index_page" id="index-page-button" class="other-button-style">
+                            <a href="{{ url_for('index_page') }}" class="button-link">Back</a>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Container untuk gambar dan teks -->
+        <div class="container">
+            <div class="Inputan">
+                <!-- Tampilkan teks input -->
+                {% if text_input %}
+                <h4>Input</h4>
+                <div>
+                    <p>{{ text_input }}</p>
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="Output">
+                <!-- Tampilkan teks output -->
+                {% if compressed_text %}
+                <h4>Output</h4>
+                <div>
+                    <p>{{ compressed_text }}</p>
+                </div>
+                <div>
+                    {% for char, code in codes.items() %}
+                        <p>{{ char }}: {{ code }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            
+                <!-- Tampilkan kode Huffman (optional)
+                {% if codes %}
+                <h4>Huffman Codes</h4>
+                <div>
+                    {% for char, code in codes.items() %}
+                    <p>{{ char }}: {{ code }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %} -->
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -32,6 +32,11 @@ header {
   margin: 10px;
 }
 
+.button-link {
+    text-decoration: none; /* Untuk menghapus garis bawah dari tautan */
+    color: #ffffff; /* Ubah warna teks sesuai kebutuhan Anda */
+}
+
 /* Style untuk container tombol-tombol */
 .button-position1 {
   display: grid;
@@ -58,8 +63,8 @@ header {
   font-family: 'Merriweather Sans', sans-serif;
 }
 
-/* Style untuk tombol-tombol */
-button[type="submit"] {
+/* Gaya untuk tombol-tombol */
+button[type="submit"], button[type="submit"] a {
   background-color: #628E90;
   color: #fff;
   width: 200px;
@@ -73,7 +78,7 @@ button[type="submit"] {
   transition: background-color 0.3s ease;
 }
 
-button[type="submit"]:hover {
+button[type="submit"]:hover, button[type="submit"] a:hover {
   background-color: #9BABB8;
 }
 
@@ -108,6 +113,11 @@ button[type="submit"]:hover {
 /* Gaya untuk teks dan gambar di dalam container "Inputan" dan "Equal" */
 .Inputan, .Output {
   text-align: justify;
+  padding-right:20px;
+  padding-left:20px;
+  padding-bottom: 20px;
+  max-width: 600px;
+  overflow-wrap: break-word; 
 }
 
 /* Mengatur tata letak elemen-elemen histogram */
