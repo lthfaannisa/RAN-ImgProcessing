@@ -18,6 +18,7 @@ from linearInterpolation import apply_linear
 from saltPepperNoise import apply_salt_and_pepper_noise
 from rankOrderFilter import remove_salt_and_pepper_noise_rank_order
 from chainCode import get_chain_code
+from huffman import huffman_compress, huffman_decompress
 
 app = Flask(__name__)
 upload_folder = os.path.join('static', 'uploads')
@@ -170,6 +171,30 @@ def upload_file():
             # Pass chain code to the HTML template
             return render_template('index.html', img=img_path, chain_code=chain_code)
         
+    return render_template('index.html')
+
+@app.route('/upload_text', methods=['POST'])
+def upload_text():
+    if request.method == 'POST':
+        text_input = request.form['text_input']
+
+        if 'process_text' in request.form:
+            # Compress text using Huffman coding
+            compressed_text, codes = huffman_compress(text_input)
+
+            # Decompress text (optional, for demonstration purposes)
+            decompressed_text = huffman_decompress(compressed_text, codes)
+
+            return render_template('huffman.html', text_input=text_input, compressed_text=compressed_text, codes=codes, decompressed_text=decompressed_text)
+
+    return render_template('huffman.html')
+
+@app.route('/huffman_page')
+def huffman_page():
+    return render_template('huffman.html')
+
+@app.route('/')
+def index_page():
     return render_template('index.html')
 
 if __name__ == '__main__': 
